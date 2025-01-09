@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './shared/pages/home/home.component';
 import { FilmesComponent } from './shared/pages/filmes/filmes.component';
+import { SessionsComponent } from './shared/pages/sessions/sessions.component';
 
 export const routes: Routes = [
     {
@@ -8,7 +9,11 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'filmes',
+        path: 'filmes/:idCity',
         component: FilmesComponent
+    },
+    {
+        path: 'filmes/:idCity/sessions/:idMovie',
+        component: SessionsComponent
     }
 ];
