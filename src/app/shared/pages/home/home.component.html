@@ -1,17 +1,24 @@
 <div class="container">
-    <h1>Bem vindo ao <span class="highlight">Bilhete Mixuruca</span><br>Escolha o estado a seguir</h1>
-    <select name="estados" id="estados">
-        <option value="Escolha o estado">Escolha o estado</option>
-        <option value="Escolha o estado">Escolha o estado</option>
-
-        @for (item of items; track $index) {
-        }
-    </select>
-    <p>Escolha a cidade</p>
-    <select name="cidades" id="cidades">
-        <option value="Escolha a cidade">Escolha a cidade</option>
-        @for (item of items; track $index) {
-        }
-    </select>
-    <div class="button"><button type="submit">Enviar</button></div>
+    <h1>Bem vindo ao <span class="highlight">Bilhete Mixuruca</span></h1>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <p>Escolha o estado a seguir</p>
+        <select name="estados" id="estados" [(ngModel)]="estado" >
+            <option value="" disabled selected hidden>Selecione um estado</option>
+            @for (item of estados; track $index) {
+                <option [ngValue]="item.uf">{{item.name}}</option>
+            }
+        </select>
+        <p>Escolha a cidade</p>
+        <select name="cidades" id="cidades" [(ngModel)]="cidade">
+            <option value="" disabled selected hidden>Selecione uma cidade</option>
+            @for (item of estados; track $index) {
+                @if (item.uf === estado) {
+                    @for (elemento of item.cities; track $index) {
+                        <option [ngValue]="elemento.id">{{elemento.name}}</option>
+                    }
+                }
+            }
+        </select>
+        <div class="divButton"><button type="submit">Enviar</button></div>
+    </form>
 </div>
