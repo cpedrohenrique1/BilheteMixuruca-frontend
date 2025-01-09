@@ -10,26 +10,36 @@
 }
 .container:hover {
     background-color: #3b3b3b;
+    transition: 25ms;
 }
 p {
     text-align: center;
-    margin-top: 5px;
     font-size: 24px;
     color: #FFF;
     font-weight: 600;
 }
 img {
+    margin-bottom: 5px;
     height: 300px;
     border-radius: 15px;
 }
-.preco {
+.nonImage {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     font-size: 20px;
     background-color: #ffffff11;
-    border-radius: 100%;
+    border-radius: 20px;
     height: 250px;
     width: 250px;
-    padding: 70px 15px;
+    padding: 30px 15px;
+    margin-bottom: 5px;
+}
+.preco {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.meia {
+    color: #FFF6C7;
 }

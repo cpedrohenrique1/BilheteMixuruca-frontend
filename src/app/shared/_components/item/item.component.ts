@@ -13,8 +13,11 @@ export class ItemComponent {
   @Input() alt: string = 'imagem';
   
   @Input() image: boolean = true;
+  @Input() horario: string = '00:00';
   @Input() data: string = 'dd-mm-yyyy';
-  @Input() price: string = 'R$ 0,00';
+  @Input() dia_semana: string = 'n-feira';
+  @Input() full_price: string = 'R$ 0,00';
+  @Input() half_price: string = 'R$ 0,00';
 
   @Output() click = new EventEmitter();
   onClick() {

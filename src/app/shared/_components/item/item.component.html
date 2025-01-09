@@ -2,9 +2,14 @@
     @if (image) {
         <img [src]="urlImage" [alt]="alt">
     } @else {
-        <div class="preco">
+        <div class="nonImage">
+            <p>{{horario}}</p>
+            <p>{{dia_semana}}</p>
             <p>{{data}}</p>
-            <p>{{price}}</p>
+            <div class="preco">
+                <p class="inteira">{{full_price}}</p>
+                <p class="meia">{{half_price}}</p>
+            </div>
         </div>
     }
     <p>{{name}}</p>
