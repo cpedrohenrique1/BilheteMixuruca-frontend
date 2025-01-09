@@ -1,0 +1,11 @@
+<div class="container" (click)="onClick()">
+    @if (image) {
+        <img [src]="urlImage" [alt]="alt">
+    } @else {
+        <div class="preco">
+            <p>{{data}}</p>
+            <p>{{price}}</p>
+        </div>
+    }
+    <p>{{name}}</p>
+</div>
