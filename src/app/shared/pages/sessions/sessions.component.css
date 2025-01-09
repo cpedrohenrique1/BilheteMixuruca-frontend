@@ -1,0 +1,8 @@
+.container {
+    padding: 30px 75px;
+}
+.sessions {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}

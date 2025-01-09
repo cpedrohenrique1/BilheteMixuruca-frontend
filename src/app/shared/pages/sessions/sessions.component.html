@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Sessões de {{nome_filme}}</h1>
+    <div class="date">
+        <nav>
+            <ul>
+                @for (item of datas; track $index) {
+                    <li>
+                        <button (click)="onClickData(item)">{{item}}</button>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+    <div class="sessions">
+        @for (item of [].constructor(10); track $index) {
+            <app-item [image]="false"></app-item>
+        }
+    </div>
+</div>
