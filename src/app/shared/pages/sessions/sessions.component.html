@@ -3,17 +3,17 @@
     <div class="date">
         <nav>
             <ul>
-                @for (item of datas; track $index) {
+                @for (item of dia_da_semana; track $index) {
                     <li>
-                        <button (click)="onClickData(item)">{{item}}</button>
+                        <button (click)="onClickData(item)"><p>{{item.dateFormatted}}</p><p>{{item.dayOfWeek}}</p></button>
                     </li>
                 }
             </ul>
         </nav>
     </div>
     <div class="sessions">
-        @for (item of [].constructor(10); track $index) {
-            <app-item [image]="false"></app-item>
+        @for (item of dia_da_semana; track $index) {
+            <app-item [image]="false" [data]="item.dateFormatted" [dia_semana]="item.dayOfWeek"></app-item>
         }
     </div>
 </div>

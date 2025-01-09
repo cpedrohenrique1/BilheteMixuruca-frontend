@@ -6,3 +6,21 @@
     display: flex;
     flex-wrap: wrap;
 }
+ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+button {
+    margin: 5px;
+    padding: 5px;
+    width: 120px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+p {
+    margin: 5px 0px;
+}
