@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-item',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './item.component.html',
   styleUrl: './item.component.css'
 })
 export class ItemComponent {
+  constructor (private router: Router) {}
   @Input() name: string = 'Nome';
   @Input() urlImage: string = 'https://picsum.photos/275/255';
   @Input() alt: string = 'imagem';
@@ -18,9 +20,5 @@ export class ItemComponent {
   @Input() dia_semana: string = 'n-feira';
   @Input() full_price: string = 'R$ 0,00';
   @Input() half_price: string = 'R$ 0,00';
-
-  @Output() click = new EventEmitter();
-  onClick() {
-    this.click.emit();
-  }
+  @Input() link: string | null = null;
 }
