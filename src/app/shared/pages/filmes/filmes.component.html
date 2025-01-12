@@ -1,13 +1,19 @@
 <div class="background">
     <h1>Filmes</h1>
-    <div class="container">
-        @for (item of filme; track $index) {
-            @if (item.images[0].type === "PosterPortrait") {
-                <app-item [name]="item.title" [urlImage]="item.images[0].url" (click)="onClick(item)"></app-item>
+    <nav class="container">
+        <ul>
+            @for (item of filme; track $index) {
+                @if (item.images[0].type === "PosterPortrait") {
+                    <li>
+                        <app-item [name]="item.title" [urlImage]="item.images[0].url" link="sessions/{{item.id}}/{{item.urlKey}}"></app-item>
+                    </li>
+                }
+                @else {
+                    <li>
+                        <app-item [name]="item.title" [urlImage]="item.images[1].url" link="sessions/{{item.id}}/{{item.urlKey}}"></app-item>
+                    </li>
+                }
             }
-            @else {
-                <app-item [name]="item.title" [urlImage]="item.images[1].url" (click)="onClick(item)"></app-item>
-            }
-        }
-    </div>
+        </ul>
+    </nav>
 </div>

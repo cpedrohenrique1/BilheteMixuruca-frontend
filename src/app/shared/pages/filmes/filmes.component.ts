@@ -21,14 +21,16 @@ export class FilmesComponent {
     this.id = this.router.snapshot.paramMap.get('idCity');
     try {
       await firstValueFrom(this.filmeService.getCartaz(this.id)).then(response => {
-        this.filme = response[0].events;
+        for (let i = 0; i < response.length; i++) {
+          if (response[i].id === "2"){
+            this.filme = response[i].events;
+            break;
+          }
+        }
       });
     }catch(error:any) {
       console.log(error.message);
     }
     console.log(this.filme);
-  }
-  onClick(item: Event){
-    this.route.navigate([`/filmes/${this.id}/sessions/${item.id}`]);
   }
 }
