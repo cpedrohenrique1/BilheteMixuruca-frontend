@@ -6,5 +6,5 @@ export interface Default {
     id:                      string;
     name:                    string;
     price:                   number;
-    image?:                  string;
+    groupName:               string;
 }

@@ -14,4 +14,5 @@ export interface Session {
     time:             string;
     defaultSector:    string;
     siteURL:          string;
+    enabled:          boolean;
 }
