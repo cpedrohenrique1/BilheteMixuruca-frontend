@@ -13,7 +13,7 @@ export const routes: Routes = [
         component: FilmesComponent
     },
     {
-        path: 'filmes/:idCity/sessions/:idMovie',
+        path: 'filmes/:idCity/sessions/:idMovie/:urlMovie',
         component: SessionsComponent
     }
 ];
