@@ -1,16 +1,19 @@
-<a [routerLink]="link" class="container">
-    @if (image) {
+@if (image) {
+    <a [routerLink]="link" class="container">
         <img [src]="urlImage" [alt]="alt">
-    } @else {
+        <p>{{name}}</p>
+    </a>
+} @else {
+    <a href="{{link}}" target="_blank" class="container">
         <div class="nonImage">
             <p>{{horario}}</p>
             <p>{{dia_semana}}</p>
             <p>{{data}}</p>
             <div class="preco">
-                <p class="inteira">{{full_price}}</p>
-                <p class="meia">{{half_price}}</p>
+                <p class="inteira">R${{full_price}}</p>
+                <p class="meia">R${{half_price}}</p>
             </div>
         </div>
-    }
-    <p>{{name}}</p>
-</a>
+        <p>{{name}}</p>
+    </a>
+}

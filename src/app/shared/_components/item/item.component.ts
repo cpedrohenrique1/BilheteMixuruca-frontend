@@ -18,7 +18,7 @@ export class ItemComponent {
   @Input() horario: string = '00:00';
   @Input() data: string = 'dd-mm-yyyy';
   @Input() dia_semana: string = 'n-feira';
-  @Input() full_price: string = 'R$ 0,00';
-  @Input() half_price: string = 'R$ 0,00';
+  @Input() full_price: number = 0;
+  @Input() half_price: number = 0;
   @Input() link: string | null = null;
 }
