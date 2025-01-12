@@ -4,19 +4,20 @@
 }
 .sessions {
     margin-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
 }
 ul {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     list-style: none;
+}
+.dates {
+    justify-content: center;
 }
 button {
     margin: 5px;
     padding: 5px;
     width: 120px;
+    height: 60px;
     border-radius: 10px;
     border-style: none;
     background-color: #f8f8f8;

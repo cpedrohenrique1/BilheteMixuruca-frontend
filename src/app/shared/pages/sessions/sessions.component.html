@@ -1,8 +1,11 @@
 <div class="container">
     <h1>Sessões de {{nome_filme}}</h1>
-    <div class="date">
+    <div>
         <nav>
-            <ul>
+            <ul class="dates">
+                <li>
+                    <button (click)="onClickData(null)"><p>Todas as sessões</p></button>
+                </li>
                 @for (item of dia_da_semana; track $index) {
                     <li>
                         <button (click)="onClickData(item)"><p>{{item.dateFormatted}}</p><p>{{item.dayOfWeek}}</p></button>
@@ -11,9 +14,13 @@
             </ul>
         </nav>
     </div>
-    <div class="sessions">
-        @for (item of dia_da_semana; track $index) {
-            <app-item [image]="false" [data]="item.dateFormatted" [dia_semana]="item.dayOfWeek"></app-item>
-        }
-    </div>
+    <nav class="sessions">
+        <ul>
+            @for (item of show_sessions; track $index) {
+                <li>
+                    <app-item [image]="false" [data]="item.data" [dia_semana]="item.dia_da_semana" [full_price]="item.precoInteira" [half_price]="item.precoMeia" [horario]="item.horario" [name]="item.nome_cinema" [link]="item.urlBuy"></app-item>
+                </li>
+            }
+        </ul>
+    </nav>
 </div>
