@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { DiaDaSemana } from '../interfaces/diadasemana.interface';
 import { Price } from '../interfaces/price.interface';
