@@ -23,6 +23,7 @@ p {
 img {
     margin-bottom: 5px;
     height: 300px;
+    max-width: 250px;
     border-radius: 15px;
 }
 .nonImage {
