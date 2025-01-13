@@ -1,10 +1,11 @@
 {
   "name": "bilhete-mixuruca",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
+    "set-env": "node set-env.js",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run set-env && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
