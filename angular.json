@@ -13,8 +13,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "baseHref": "/browser/",
-            "outputPath": "dist/bilhete-mixuruca",
+            "baseHref": "/",
+            "outputPath": {
+              "base": "dist/bilhete-mixuruca",
+              "browser": ""
+            },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
