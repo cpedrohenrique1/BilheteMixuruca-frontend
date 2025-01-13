@@ -1,10 +1,15 @@
-const { writeFileSync } = require('fs');
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import { join } from 'path';
 
-const targetPath = './src/environments/environment.ts';
+const dirPath = './src/environments';
+const targetPath = join(dirPath, 'environment.ts');
+
+if (!existsSync(dirPath)) {
+    mkdirSync(dirPath, { recursive: true });
+}
 
 const envConfigFile = `
 export const environment = {
-    production: ${process.env.NODE_ENV === 'production'},
     BACKEND_URL: '${process.env.BACKEND_URL}'
 };
 `;
