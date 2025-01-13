@@ -1,10 +1,10 @@
 @if (image) {
-    <a [routerLink]="link" class="container">
+    <a [routerLink]="link" class="container" (click)="onClick()">
         <img [src]="urlImage" [alt]="alt">
         <p>{{name}}</p>
     </a>
 } @else {
-    <a href="{{link}}" target="_blank" class="container">
+    <a href="{{link}}" target="_blank" class="container" (click)="onClick()">
         <div class="nonImage">
             <p>{{horario}}</p>
             <p>{{dia_semana}}</p>

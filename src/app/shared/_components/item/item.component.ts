@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -21,4 +21,9 @@ export class ItemComponent {
   @Input() full_price: number = 0;
   @Input() half_price: number = 0;
   @Input() link: string | null = null;
+  @Output() click = new EventEmitter;
+
+  onClick() {
+    this.click.emit();
+  }
 }
