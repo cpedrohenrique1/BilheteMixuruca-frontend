@@ -3,8 +3,33 @@
     padding: 30px;
 }
 .promocoes {
-    width: 200px;
-    height: 300px;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+/* Estiliza a barra de rolagem */
+.promocoes::-webkit-scrollbar {
+    width: 12px; /* Largura da barra vertical */
+    height: 12px; /* Altura da barra horizontal */
+}
+
+/* Estiliza o fundo da barra de rolagem */
+.promocoes::-webkit-scrollbar-track {
+    background: #7c7c7c; /* Cor do fundo */
+    border-radius: 20px; /* Bordas arredondadas */
+}
+
+/* Estiliza o "polegar" da barra de rolagem */
+.promocoes::-webkit-scrollbar-thumb {
+    background: #363636; /* Cor do polegar */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Adiciona efeito ao passar o mouse sobre o "polegar" */
+.promocoes::-webkit-scrollbar-thumb:hover {
+    background: #000000; /* Cor ao passar o mouse */
+}
+h1 {
+    margin-top: 30px;
 }
 .container {
     margin-top: 30px;

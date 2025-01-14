@@ -4,10 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FilmeService } from '../../services/filme.service';
 import { Event } from '../../interfaces/event.interface';
 import { Item } from '../../interfaces/item.interface';
+import { PromocoesComponent } from "../../_components/promocoes/promocoes.component";
 
 @Component({
   selector: 'app-filmes',
-  imports: [ItemComponent],
+  imports: [ItemComponent, PromocoesComponent],
   providers:[FilmeService],
   templateUrl: './filmes.component.html',
   styleUrl: './filmes.component.css'
