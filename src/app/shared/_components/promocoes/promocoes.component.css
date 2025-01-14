@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #FFF;
+    width: 615px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+.container:hover {
+    background-color: #3b3b3b;
+    transition: 25ms;
+}
+img {
+    border-radius: 15px;
+}
