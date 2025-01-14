@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './promocoes.component.css'
 })
 export class PromocoesComponent {
-  @Input() alt: string = '';
-  @Input() urlImage: string = '';
-  @Input() name: string = '';
-  @Input() link: string = '';
+  @Input() alt: string = 'imagem promocao';
+  @Input() urlImage: string = '/';
+  @Input() name: string = 'titulo promocao';
+  @Input() link: string = '/';
 }

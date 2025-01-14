@@ -4,7 +4,7 @@
         <ul class="promocoes">
             @for (item of promocoes; track $index) {
                 <li>
-                    <app-promocoes [urlImage]="item.image" [name]="item.name + ' ' + item.description + ' ' + item.value"></app-promocoes>
+                    <app-promocoes [urlImage]="item.image" [name]="item.name + ' ' + item.description + ' ' + item.value" [link]="item.url"></app-promocoes>
                 </li>
             }
         </ul>
