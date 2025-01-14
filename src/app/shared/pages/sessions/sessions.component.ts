@@ -83,7 +83,6 @@ export class SessionsComponent {
                 session_payload.dia_da_semana = this.dia_da_semana[i].theaters[j].rooms[k].sessions[l].date.dayOfWeek;
                 session_payload.data = this.dia_da_semana[i].theaters[j].rooms[k].sessions[l].date.dayAndMonth;
                 session_payload.urlBuy = this.dia_da_semana[i].theaters[j].rooms[k].sessions[l].siteURL;
-                console.log(session_payload);
                 this.todas_sessoes.push(session_payload);
               }
             }
