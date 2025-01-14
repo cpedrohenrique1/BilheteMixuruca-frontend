@@ -61,7 +61,19 @@ export class SessionsComponent {
                     if (response.default[iterator].groupName === "Inteira") {
                       session_payload.precoInteira = response.default[iterator].price;
                     }
-                    else if (response.default[iterator].groupName === "Meia") {
+                    if (response.default[iterator].groupName === "Meia") {
+                      session_payload.precoMeia = response.default[iterator].price;
+                    }
+                    if (response.default[iterator].id === "2258") {
+                      session_payload.precoInteira = response.default[iterator].price;
+                    }
+                    if (response.default[iterator].id === "2259") {
+                      session_payload.precoMeia = response.default[iterator].price;
+                    }
+                    if (response.default[iterator].id === "3356") {
+                      session_payload.precoInteira = response.default[iterator].price;
+                    }
+                    if (response.default[iterator].id === "3355") {
                       session_payload.precoMeia = response.default[iterator].price;
                     }
                   }
@@ -71,6 +83,7 @@ export class SessionsComponent {
                 session_payload.dia_da_semana = this.dia_da_semana[i].theaters[j].rooms[k].sessions[l].date.dayOfWeek;
                 session_payload.data = this.dia_da_semana[i].theaters[j].rooms[k].sessions[l].date.dayAndMonth;
                 session_payload.urlBuy = this.dia_da_semana[i].theaters[j].rooms[k].sessions[l].siteURL;
+                console.log(session_payload);
                 this.todas_sessoes.push(session_payload);
               }
             }
@@ -81,6 +94,7 @@ export class SessionsComponent {
       for (let i = 0; i < this.todas_sessoes.length; i++) {
         this.show_sessions.push(this.todas_sessoes[i]);
       }
+      console.log(this.show_sessions);
     }catch(error: any) {
       console.log(error.message);
     }
