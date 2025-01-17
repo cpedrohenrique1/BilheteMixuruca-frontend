@@ -5,6 +5,7 @@
 .promocoes {
     flex-wrap: nowrap;
     overflow-y: auto;
+    justify-content: flex-start;
 }
 /* Estiliza a barra de rolagem */
 .promocoes::-webkit-scrollbar {
@@ -38,4 +39,5 @@ ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }

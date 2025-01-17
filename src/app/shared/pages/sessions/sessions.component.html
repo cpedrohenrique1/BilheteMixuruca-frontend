@@ -1,8 +1,8 @@
 <div class="container">
     <h1>Sessões de {{nome_filme}}</h1>
     <div>
-        <nav>
-            <ul class="dates">
+        <nav class="dates">
+            <ul class="datesUl">
                 <li>
                     <button (click)="onClickData(null)"><p>Todas as sessões</p></button>
                 </li>
@@ -15,7 +15,7 @@
         </nav>
     </div>
     <nav class="sessions">
-        <ul>
+        <ul class="sessionsUl">
             @for (item of show_sessions; track $index) {
                 <li>
                     <app-item [image]="false" [data]="item.data" [dia_semana]="item.dia_da_semana" [full_price]="item.precoInteira" [half_price]="item.precoMeia" [horario]="item.horario" [name]="item.nome_cinema" [link]="item.urlBuy"></app-item>

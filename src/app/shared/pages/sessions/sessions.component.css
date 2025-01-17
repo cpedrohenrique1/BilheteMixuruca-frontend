@@ -1,18 +1,19 @@
 .container {
-    padding: 30px 75px;
+    padding: 5px 5px;
     background-color: #252522;
 }
-.sessions {
-    margin-top: 15px;
+.dates {
+    display: flex;
+    justify-content: center;
 }
 ul {
     display: flex;
-    flex-wrap: wrap;
     list-style: none;
 }
-.dates {
-    justify-content: center;
+.datesUl {
+    overflow-x: auto;
 }
+
 button {
     margin: 5px;
     padding: 5px;
@@ -26,4 +27,11 @@ button {
 }
 p {
     margin: 5px 0px;
+}
+.sessions {
+    margin-top: 15px;
+}
+.sessionsUl {
+    flex-wrap: wrap;
+    justify-content: center;
 }
