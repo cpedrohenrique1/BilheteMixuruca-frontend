@@ -1,4 +1,3 @@
-
 export const environment = {
-    BACKEND_URL: ""
+    BACKEND_URL: '${process.env.BACKEND_URL}'
 };
