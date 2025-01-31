@@ -81,7 +81,6 @@ export class SessionsComponent {
     try {
       await firstValueFrom(this.session_service.getAllSessions(this.idCity, this.idMovie)).then(response => {
         this.dia_da_semana = this.splitResponse(this.sortResponse(response));
-        console.log(this.dia_da_semana);
       });
       for (const dia of this.dia_da_semana) {
         for (const theater of dia.theaters) {
