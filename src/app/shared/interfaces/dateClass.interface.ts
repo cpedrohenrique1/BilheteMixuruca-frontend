@@ -1,5 +1,5 @@
 export interface DateClass {
-    localDate:   Date;
+    localDate:   string;
     isToday:     boolean;
     dayOfWeek:   string;
     dayAndMonth: string;
