@@ -2,6 +2,9 @@
     padding: 5px 5px;
     background-color: #252522;
 }
+span {
+    text-transform: capitalize;
+}
 .dates {
     display: flex;
     justify-content: center;
@@ -32,6 +35,7 @@ p {
     margin-top: 15px;
 }
 .sessionsUl {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
