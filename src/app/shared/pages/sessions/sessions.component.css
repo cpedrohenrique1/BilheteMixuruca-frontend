@@ -39,3 +39,19 @@ p {
     justify-items: center;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading__img {
+    margin: auto;
+    margin-top: 50px;
+    height: 100px;
+}
+
+.hidden {
+    display: none;
+}

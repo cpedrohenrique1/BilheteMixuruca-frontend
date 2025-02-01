@@ -34,25 +34,24 @@ export class SessionsComponent {
     );
   }
 
+  getMinPriceDiaDaSemana (dia: DiaDaSemana): number {
+    let minPrice = Infinity;
+    dia.theaters.forEach(theater => {
+      theater.rooms.forEach(room => {
+        room.sessions.forEach(session => {
+          if (session.price < minPrice) {
+            minPrice = session.price;
+          }
+        });
+      });
+    });
+    return minPrice;
+  };
+
   sortResponse(response: DiaDaSemana[]): DiaDaSemana[] {
     return response.sort((a, b) => {
-      const getMinPrice = (dia: DiaDaSemana) => {
-        let minPrice = Infinity;
-        dia.theaters.forEach(theater => {
-          theater.rooms.forEach(room => {
-            room.sessions.forEach(session => {
-              if (session.price < minPrice) {
-                minPrice = session.price;
-              }
-            });
-          });
-        });
-        return minPrice;
-      };
-
-      const minPriceA = getMinPrice(a);
-      const minPriceB = getMinPrice(b);
-
+      const minPriceA = this.getMinPriceDiaDaSemana(a);
+      const minPriceB = this.getMinPriceDiaDaSemana(b);
       return minPriceA - minPriceB;
     });
   }
@@ -63,18 +62,22 @@ export class SessionsComponent {
     return response.splice(0, half);
   }
 
+  formatarNomeFilme(nome_filme: string): string {
+    let nome_filme_temp: string[] = nome_filme.split("");
+    for (let i = 0; i < nome_filme.length; i++) {
+      if (nome_filme[i] == "-") {
+        nome_filme_temp[i] = " ";
+      }
+    }
+    return nome_filme_temp.join("");
+  }
+
   async ngOnInit() {
     this.nome_filme = this.route.snapshot.paramMap.get('urlMovie');
     if (this.nome_filme == null) {
       this.nome_filme = '';
     } else {
-      let nome_filme_temp: string[] = this.nome_filme.split("");
-      for (let i = 0; i < this.nome_filme.length; i++) {
-        if (this.nome_filme[i] == "-") {
-          nome_filme_temp[i] = " ";
-        }
-        this.nome_filme = nome_filme_temp.join("");
-      }
+      this.nome_filme = this.formatarNomeFilme(this.nome_filme);
     }
     this.idCity = this.route.snapshot.paramMap.get('idCity');
     this.idMovie = this.route.snapshot.paramMap.get('idMovie');
@@ -116,6 +119,8 @@ export class SessionsComponent {
         }
       }
       this.todas_sessoes.sort((n1, n2) => n1.precoInteira - n2.precoInteira);
+      const loading = document.getElementById("loading");
+      loading?.classList.add("hidden");
       for (let i = 0; i < this.todas_sessoes.length; i++) {
         this.show_sessions.push(this.todas_sessoes[i]);
       }
