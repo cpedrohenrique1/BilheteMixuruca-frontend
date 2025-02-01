@@ -58,7 +58,10 @@ export class SessionsComponent {
 
   splitResponse(response: DiaDaSemana[]): DiaDaSemana[] {
     // response will be cut in the half
-    const half = Math.floor(response.length / 2);
+    const half: number = Math.floor(response.length / 2);
+    if (half === 0) {
+      return response;
+    }
     return response.splice(0, half);
   }
 
