@@ -20,6 +20,7 @@ export class SessionsComponent {
   dia_da_semana: DiaDaSemana[] = [];
   todas_sessoes: SessionsPayload[] = [];
   show_sessions: SessionsPayload[] = [];
+  loading: boolean = true;
 
   onClickData(item: DiaDaSemana | null) {
     this.show_sessions = [];
@@ -122,8 +123,7 @@ export class SessionsComponent {
         }
       }
       this.todas_sessoes.sort((n1, n2) => n1.precoInteira - n2.precoInteira);
-      const loading = document.getElementById("loading");
-      loading?.classList.add("hidden");
+      this.loading = false;
       for (let i = 0; i < this.todas_sessoes.length; i++) {
         this.show_sessions.push(this.todas_sessoes[i]);
       }

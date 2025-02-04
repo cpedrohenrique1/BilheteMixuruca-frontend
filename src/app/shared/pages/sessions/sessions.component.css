@@ -41,6 +41,7 @@ p {
 }
 
 .loading {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,10 +49,5 @@ p {
 
 .loading__img {
     margin: auto;
-    margin-top: 50px;
     height: 100px;
-}
-
-.hidden {
-    display: none;
 }
