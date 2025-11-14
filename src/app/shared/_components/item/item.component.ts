@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-item',
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './item.component.html',
   styleUrl: './item.component.css'
 })
