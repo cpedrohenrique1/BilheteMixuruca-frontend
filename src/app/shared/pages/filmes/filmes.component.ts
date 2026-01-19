@@ -21,14 +21,6 @@ export class FilmesComponent {
   async ngOnInit() {
     this.id = this.router.snapshot.paramMap.get('idCity');
     try {
-      this.filmeService.getPromocoes(this.id).subscribe(response => {
-        for (let index = 0; index < response.length; index++) {
-          if (response[index].id === "16") {
-            this.promocoes = response[index].items;
-            break;
-          }
-        }
-      });
       this.filmeService.getCartaz(this.id).subscribe(response => {
         for (let i = 0; i < response.length; i++) {
           if (response[i].id === "2"){

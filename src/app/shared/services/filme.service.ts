@@ -21,15 +21,4 @@ export class FilmeService {
       throw new Error("Não foi possível");
     }
   }
-
-  getPromocoes(idCity: string | null) {
-    try {
-      if (idCity === null) {
-        throw new Error();
-      }
-      return this.http.get<Promocoes[]>(`${this.URL}/api0/v0/carousel/${idCity}/partnership/home?carousels=promocoes`);
-    }catch(error: any) {
-      throw new Error("Não foi possível requerer promocoes");
-    }
-  }
 }
