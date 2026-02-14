@@ -1,16 +1,16 @@
-<div class="background">
-    <h1>Filmes</h1>
-    <nav class="container">
-        <ul class="container__filmes">
+<div class="flex flex-col gap-2">
+    <h1 class="text-3xl">Filmes em cartaz</h1>
+    <nav>
+        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4 xl:grid-cols-4 2xl:grid-cols-6">
             @for (item of filme; track $index) {
                 @if (item.images[0].type === "PosterPortrait") {
                     <li>
-                        <app-item class="filmes" [name]="item.title" [urlImage]="item.images[0].url" link="sessions/{{item.id}}/{{item.urlKey}}"></app-item>
+                        <app-movie-poster [name]="item.title" [urlImage]="item.images[0].url" link="sessoes/{{item.id}}/{{item.urlKey}}"></app-movie-poster>
                     </li>
                 }
                 @else {
                     <li>
-                        <app-item class="filmes" [name]="item.title" [urlImage]="item.images[1].url" link="sessions/{{item.id}}/{{item.urlKey}}"></app-item>
+                        <app-movie-poster [name]="item.title" [urlImage]="item.images[1].url" link="sessoes/{{item.id}}/{{item.urlKey}}"></app-movie-poster>
                     </li>
                 }
             }

@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { DiaDaSemana } from '../../interfaces/diadasemana.interface';
-import { ItemComponent } from '../../_components/item/item.component';
 import { SessionService } from '../../services/session.service';
 import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { SessionsPayload } from '../../interfaces/sessionsPayload.interface';
+import { MovieSessionsComponent } from "../../_components/movie-sessions/movie-sessions.component";
+import { DateCardComponent } from "../../_components/date-card/date-card.component";
 
 @Component({
   selector: 'app-sessions',
-  imports: [ItemComponent],
+  imports: [MovieSessionsComponent, DateCardComponent],
   templateUrl: './sessions.component.html',
   styleUrl: './sessions.component.css'
 })

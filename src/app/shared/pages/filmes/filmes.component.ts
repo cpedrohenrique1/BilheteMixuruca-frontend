@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { ItemComponent } from '../../_components/item/item.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FilmeService } from '../../services/filme.service';
 import { Event } from '../../interfaces/event.interface';
 import { Item } from '../../interfaces/item.interface';
+import { MoviePosterComponent } from "../../_components/movie-poster/movie-poster.component";
 
 @Component({
   selector: 'app-filmes',
-  imports: [ItemComponent],
+  imports: [MoviePosterComponent],
   providers:[FilmeService],
   templateUrl: './filmes.component.html',
   styleUrl: './filmes.component.css'

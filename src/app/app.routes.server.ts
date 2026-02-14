@@ -10,7 +10,7 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client
   },
   {
-    path: 'filmes/:idCity/sessions/:idMovie/:urlMovie',
+    path: 'filmes/:idCity/sessoes/:idMovie/:urlMovie',
     renderMode: RenderMode.Client
   }
 ];

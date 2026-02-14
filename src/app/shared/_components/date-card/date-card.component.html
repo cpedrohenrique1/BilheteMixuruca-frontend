@@ -1,0 +1,5 @@
+<button (click)="onClick()" class="btn btn-primary h-20 w-3xs p-3 rounded-2xl flex flex-col justify-center">
+    @for (item of infos; track $index) {
+        <p>{{item}}</p>
+    }
+</button>
