@@ -1,11 +1,11 @@
-<a href="{{link}}" target="_blank" class="" (click)="onClick()">
-    <div class="nonImage">
+<a href="{{link}}" target="_blank" class="hover:bg-slate-600 capitalize text-white rounded-2xl p-5 flex flex-col items-center text-center w-3xs gap-3" (click)="onClick()">
+    <div class="flex flex-col gap-3 w-full items-center justify-center bg-gray-700 rounded-2xl p-3 h-56">
         <p>{{horario}}</p>
         <p>{{dia_semana}}</p>
         <p>{{data}}</p>
-        <div class="">
+        <div class="flex justify-around w-full">
             <p class="">R${{full_price}}</p>
-            <p class="">R${{half_price}}</p>
+            <p class="text-amber-200">R${{half_price}}</p>
         </div>
     </div>
     <p>{{cinemaName}}</p>

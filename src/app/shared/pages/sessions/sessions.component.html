@@ -1,40 +1,39 @@
 <div class="flex flex-col gap-6">
-    <h1 class="text-3xl">Sessões de {{nome_filme}}</h1>
+    <h1 class="text-3xl">Sessões de <span class="capitalize">{{nome_filme}}</span></h1>
     <nav class="flex justify-center">
-        <ul class="flex items-center gap-2 overflow-x-auto text-neutral dark:text-neutral">
+        <ul class="flex items-center gap-3 overflow-x-auto text-neutral dark:text-neutral">
             <li>
                 <app-date-card [infos]="'Todas as sessões'.split('.')"></app-date-card>
             </li>
             @for (item of dia_da_semana; track $index) {
-            <li>
-                <app-date-card [infos]="item.dateFormatted.concat(':' +item.dayOfWeek).split(':')"></app-date-card>
-            </li>
+                <li>
+                    <app-date-card [infos]="item.dateFormatted.concat(':' +item.dayOfWeek).split(':')"></app-date-card>
+                </li>
             }
         </ul>
     </nav>
     @if (loading) {
-    <span class="flex justify-center p-10"><span class="loading loading-dots loading-xl text-black dark:text-white"
-            id="loading"></span></span>
-    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-6 xl:grid-cols-4 2xl:grid-cols-6">
-        @for (item of [].constructor(7); track $index) {
-        <li>
-            <div class="flex w-full flex-col gap-2">
-                <div class="skeleton h-56 w-full"></div>
-                <div class="skeleton h-12 w-full"></div>
-            </div>
-        </li>
-        }
-    </ul>
+        <span class="flex justify-center p-10"><span class="loading loading-dots loading-xl text-black dark:text-white"
+                id="loading"></span></span>
+        <ul class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+            @for (item of [].constructor(7); track $index) {
+                <li>
+                    <div class="flex w-full flex-col gap-2">
+                        <div class="skeleton h-56 w-full"></div>
+                        <div class="skeleton h-12 w-full"></div>
+                    </div>
+                </li>
+            }
+        </ul>
     } @else {
-    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-6 xl:grid-cols-4 2xl:grid-cols-6">
-        @for (item of show_sessions; track $index) {
-        <li>
-            <app-movie-sessions [data]="item.data" [dia_semana]="item.dia_da_semana" [full_price]="item.precoInteira"
-                [half_price]="item.precoMeia" [horario]="item.horario" [cinemaName]="item.nome_cinema"
-                [link]="item.urlBuy"></app-movie-sessions>
-        </li>
-        }
-    </ul>
-
+        <ul class="grid justify-items-center grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+            @for (item of show_sessions; track $index) {
+                <li>
+                    <app-movie-sessions [data]="item.data" [dia_semana]="item.dia_da_semana" [full_price]="item.precoInteira"
+                        [half_price]="item.precoMeia" [horario]="item.horario" [cinemaName]="item.nome_cinema"
+                        [link]="item.urlBuy"></app-movie-sessions>
+                </li>
+            }
+        </ul>
     }
 </div>
