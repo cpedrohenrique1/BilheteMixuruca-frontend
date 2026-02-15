@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { DiaDaSemana } from '../../interfaces/diadasemana.interface';
 import { SessionService } from '../../services/session.service';
 import { ActivatedRoute } from '@angular/router';
@@ -14,26 +14,31 @@ import { DateCardComponent } from "../../_components/date-card/date-card.compone
   styleUrl: './sessions.component.css'
 })
 export class SessionsComponent {
-  constructor(private session_service: SessionService, private route: ActivatedRoute) { }
+  session_service: SessionService = inject(SessionService);
+  route: ActivatedRoute = inject(ActivatedRoute);
+
   idCity!: string | null;
   idMovie!: string | null;
   nome_filme!: string | null;
-  dia_da_semana: DiaDaSemana[] = [];
+  dia_da_semana = signal<DiaDaSemana[]>([])
   todas_sessoes: SessionsPayload[] = [];
-  show_sessions: SessionsPayload[] = [];
-  loading: boolean = true;
+  show_sessions = signal<SessionsPayload[]>([]);
+  loading = signal<boolean>(true);
+  loadingComponent = signal<any[]>([]);
 
   onClickData(item: DiaDaSemana | null) {
-    this.show_sessions = [];
+    this.show_sessions.set([]);
+    let tempArray: SessionsPayload[] = [];
     for (let i = 0; i < this.todas_sessoes.length; i++) {
-      this.show_sessions.push(this.todas_sessoes[i]);
+      tempArray.push(this.todas_sessoes[i]);
     }
     if (item == null) {
       return;
     }
-    this.show_sessions = this.show_sessions.filter(
+    tempArray = tempArray.filter(
       session => session.dia_da_semana === item.dayOfWeek
     );
+    this.show_sessions.set(tempArray);
   }
 
   getMinPriceDiaDaSemana (dia: DiaDaSemana): number {
@@ -59,7 +64,6 @@ export class SessionsComponent {
   }
 
   splitResponse(response: DiaDaSemana[]): DiaDaSemana[] {
-    // response will be cut in the half
     const half: number = Math.floor(response.length / 2);
     if (half === 0) {
       return response;
@@ -77,7 +81,16 @@ export class SessionsComponent {
     return nome_filme_temp.join("");
   }
 
+  addLoadingComponent(){
+    for (let i = 0; i < 10; i++){
+      setTimeout(() => {
+        this.loadingComponent.update(prev => [...prev, {id: i}]);
+      }, i * 2000);
+    }
+  }
+
   async ngOnInit() {
+    this.addLoadingComponent();
     this.nome_filme = this.route.snapshot.paramMap.get('urlMovie');
     if (this.nome_filme == null) {
       this.nome_filme = '';
@@ -88,9 +101,9 @@ export class SessionsComponent {
     this.idMovie = this.route.snapshot.paramMap.get('idMovie');
     try {
       await firstValueFrom(this.session_service.getAllSessions(this.idCity, this.idMovie)).then(response => {
-        this.dia_da_semana = this.splitResponse(this.sortResponse(response));
+        this.dia_da_semana.set(this.splitResponse(this.sortResponse(response)));
       });
-      for (const dia of this.dia_da_semana) {
+      for (const dia of this.dia_da_semana()) {
         for (const theater of dia.theaters) {
           for (const room of theater.rooms) {
             for (const session of room.sessions) {
@@ -124,10 +137,12 @@ export class SessionsComponent {
         }
       }
       this.todas_sessoes.sort((n1, n2) => n1.precoInteira - n2.precoInteira);
-      this.loading = false;
+      this.loading.set(false);
+      let tempArray: SessionsPayload[] = []
       for (let i = 0; i < this.todas_sessoes.length; i++) {
-        this.show_sessions.push(this.todas_sessoes[i]);
+        tempArray.push(this.todas_sessoes[i]);
       }
+      this.show_sessions.set(tempArray);
     } catch (error: any) {
       console.log(error.message);
     }

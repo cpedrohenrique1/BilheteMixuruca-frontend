@@ -9,7 +9,7 @@
                 <legend class="fieldset-legend dark:text-[#E9C7FF]">Escolha o estado a seguir</legend>
                 <select class="select appearance-none outline-0 dark:text-white w-full" required name="estados" id="estados" [(ngModel)]="estado" >
                     <option value="" disabled selected hidden>Selecione um estado</option>
-                    @for (item of estados; track $index) {
+                    @for (item of estados(); track $index) {
                         <option [ngValue]="item.uf">{{item.name}}</option>
                     }
                 </select>
@@ -18,7 +18,7 @@
                 <legend class="fieldset-legend dark:text-[#E9C7FF]">Escolha a cidade</legend>
                 <select class="select appearance-none outline-0 dark:text-white w-full" required name="cidades" id="cidades" [(ngModel)]="cidade">
                     <option value="" disabled selected hidden>Selecione uma cidade</option>
-                    @for (item of estados; track $index) {
+                    @for (item of estados(); track $index) {
                         @if (item.uf === estado) {
                             @for (elemento of item.cities; track $index) {
                                 <option [ngValue]="elemento.id">{{elemento.name}}</option>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal, Signal } from '@angular/core';
 import { EstadoService } from '../../services/estado.service';
 import { State } from '../../interfaces/state.interface';
 import { FormsModule } from '@angular/forms';
@@ -12,15 +12,16 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  estados: State[] = [];
+  estados = signal<State[]>([]);
   estado: string = '';
   cidade: string = '';
-  constructor(private estadoService: EstadoService, private router: Router) {
-  }
+  estadoService: EstadoService = inject(EstadoService);
+  router: Router = inject(Router);
+  
   ngOnInit() {
     try {
       this.estadoService.getEstados().then((states) => {
-        this.estados = states;
+        this.estados.set(states);
       });
     }catch(error: any) {
       console.log(error.message);

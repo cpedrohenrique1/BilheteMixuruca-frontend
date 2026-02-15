@@ -2,7 +2,7 @@
     <h1 class="text-3xl">Filmes em cartaz</h1>
     <nav>
         <ul class="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
-            @for (item of filme; track $index) {
+            @for (item of filme(); track $index) {
                 @if (item.images[0].type === "PosterPortrait") {
                     <li>
                         <app-movie-poster [name]="item.title" [urlImage]="item.images[0].url" link="sessoes/{{item.id}}/{{item.urlKey}}"></app-movie-poster>

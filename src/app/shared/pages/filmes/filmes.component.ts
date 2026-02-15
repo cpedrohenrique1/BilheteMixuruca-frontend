@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FilmeService } from '../../services/filme.service';
 import { Event } from '../../interfaces/event.interface';
@@ -14,9 +14,10 @@ import { MoviePosterComponent } from "../../_components/movie-poster/movie-poste
 })
 export class FilmesComponent {
   id: string | null = null;
-  filme!: Event[];
-  promocoes!: Item[];
-  constructor(private router: ActivatedRoute, private filmeService: FilmeService, private route: Router) {}
+  filme = signal<Event[]>([]);
+  router: ActivatedRoute = inject(ActivatedRoute);
+  filmeService: FilmeService = inject(FilmeService);
+  route: Router = inject(Router);
 
   async ngOnInit() {
     this.id = this.router.snapshot.paramMap.get('idCity');
@@ -24,7 +25,7 @@ export class FilmesComponent {
       this.filmeService.getCartaz(this.id).subscribe(response => {
         for (let i = 0; i < response.length; i++) {
           if (response[i].id === "2"){
-            this.filme = response[i].events;
+            this.filme.set(response[i].events);
           }
         }
       });
