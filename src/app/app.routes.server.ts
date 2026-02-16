@@ -7,10 +7,10 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'filmes/:idCity',
-    renderMode: RenderMode.Client
+    renderMode: RenderMode.Server
   },
   {
     path: 'filmes/:idCity/sessoes/:idMovie/:urlMovie',
-    renderMode: RenderMode.Client
+    renderMode: RenderMode.Server
   }
 ];
