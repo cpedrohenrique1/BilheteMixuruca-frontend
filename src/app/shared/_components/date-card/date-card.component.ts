@@ -8,8 +8,4 @@ import { Component, Input } from '@angular/core';
 })
 export class DateCardComponent {
   @Input() infos!: string[];
-
-  @Input() onClick(){
-
-  }
 }

@@ -20,20 +20,20 @@ export class SessionsComponent {
   idCity!: string | null;
   idMovie!: string | null;
   nome_filme!: string | null;
-  dia_da_semana = signal<DiaDaSemana[]>([])
+  dia_da_semana = signal<DiaDaSemana[]>([]);
   todas_sessoes: SessionsPayload[] = [];
   show_sessions = signal<SessionsPayload[]>([]);
   loading = signal<boolean>(true);
   loadingComponent = signal<any[]>([]);
 
   onClickData(item: DiaDaSemana | null) {
-    let tempArray: SessionsPayload[] = this.todas_sessoes.concat();
+    let tempArray: SessionsPayload[] = this.todas_sessoes.slice();
     if (item == null) {
       this.show_sessions.set(tempArray);
       return;
     }
     tempArray = tempArray.filter(
-      session => session.dia_da_semana === item.dayOfWeek
+      session => session.data === item.dateFormatted
     );
     this.show_sessions.set(tempArray);
   }
@@ -65,7 +65,7 @@ export class SessionsComponent {
     if (half === 0) {
       return response;
     }
-    return response.splice(0, half);
+    return response.slice(0, half);
   }
 
   formatarNomeFilme(nome_filme: string): string {
