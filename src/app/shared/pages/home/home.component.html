@@ -6,8 +6,8 @@
     <form class="flex flex-col p-2 gap-8 w-full max-w-2xl" (ngSubmit)="onSubmit()" #form="ngForm">
         <div class="flex flex-col gap-3">
             <fieldset class="fieldset text-left text-base">
-                <legend class="fieldset-legend dark:text-[#E9C7FF]">Escolha o estado a seguir</legend>
-                <select class="select appearance-none outline-0 dark:text-white w-full" required name="estados" id="estados" [(ngModel)]="estado" >
+                <legend class="fieldset-legend dark:text-[#E9C7FF] text-[#8e06e8]">Escolha o estado a seguir</legend>
+                <select class="select appearance-none outline-0 dark:text-white text-black w-full" required name="estados" id="estados" [(ngModel)]="estado" >
                     <option value="" disabled selected hidden>Selecione um estado</option>
                     @for (item of estados(); track $index) {
                         <option [ngValue]="item.uf">{{item.name}}</option>
@@ -15,8 +15,8 @@
                 </select>
             </fieldset>
             <fieldset class="fieldset text-left text-base">
-                <legend class="fieldset-legend dark:text-[#E9C7FF]">Escolha a cidade</legend>
-                <select class="select appearance-none outline-0 dark:text-white w-full" required name="cidades" id="cidades" [(ngModel)]="cidade">
+                <legend class="fieldset-legend dark:text-[#E9C7FF] text-[#8e06e8]">Escolha a cidade</legend>
+                <select class="select appearance-none outline-0 dark:text-white text-black w-full" required name="cidades" id="cidades" [(ngModel)]="cidade">
                     <option value="" disabled selected hidden>Selecione uma cidade</option>
                     @for (item of estados(); track $index) {
                         @if (item.uf === estado) {

@@ -1,11 +1,11 @@
-<a [href]="link" target="_blank" rel="noopener noreferrer" class="hover:bg-slate-600 capitalize text-white rounded-2xl p-5 flex flex-col items-center text-center w-3xs gap-3" (click)="onClick()">
-    <div class="flex flex-col gap-3 w-full items-center justify-center bg-gray-700 rounded-2xl p-3 h-56">
+<a [href]="link" target="_blank" rel="noopener noreferrer" class="dark:hover:bg-slate-600 hover:bg-slate-200 capitalize dark:text-white text-black rounded-2xl p-5 flex flex-col items-center text-center w-3xs gap-3" (click)="onClick()">
+    <div class="flex flex-col gap-3 w-full items-center justify-center bg-gray-300 dark:bg-gray-800 rounded-2xl p-3 h-56">
         <p>{{horario}}</p>
         <p>{{dia_semana}}</p>
         <p>{{data}}</p>
-        <div class="flex justify-around w-full">
+        <div class="flex justify-around w-full font-bold">
             <p class="">R${{full_price}}</p>
-            <p class="text-amber-200">R${{half_price}}</p>
+            <p class="dark:text-amber-200 text-emerald-700">R${{half_price}}</p>
         </div>
     </div>
     <p>{{cinemaName}}</p>
