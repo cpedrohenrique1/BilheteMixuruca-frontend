@@ -27,12 +27,9 @@ export class SessionsComponent {
   loadingComponent = signal<any[]>([]);
 
   onClickData(item: DiaDaSemana | null) {
-    this.show_sessions.set([]);
-    let tempArray: SessionsPayload[] = [];
-    for (let i = 0; i < this.todas_sessoes.length; i++) {
-      tempArray.push(this.todas_sessoes[i]);
-    }
+    let tempArray: SessionsPayload[] = this.todas_sessoes.concat();
     if (item == null) {
+      this.show_sessions.set(tempArray);
       return;
     }
     tempArray = tempArray.filter(
@@ -138,11 +135,7 @@ export class SessionsComponent {
       }
       this.todas_sessoes.sort((n1, n2) => n1.precoInteira - n2.precoInteira);
       this.loading.set(false);
-      let tempArray: SessionsPayload[] = []
-      for (let i = 0; i < this.todas_sessoes.length; i++) {
-        tempArray.push(this.todas_sessoes[i]);
-      }
-      this.show_sessions.set(tempArray);
+      this.show_sessions.set(this.todas_sessoes);
     } catch (error: any) {
       console.log(error.message);
     }
