@@ -1,4 +1,4 @@
-import { Component, inject, signal, Signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { EstadoService } from '../../services/estado.service';
 import { State } from '../../interfaces/state.interface';
 import { FormsModule } from '@angular/forms';

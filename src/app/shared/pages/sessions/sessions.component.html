@@ -3,11 +3,11 @@
     <nav class="flex justify-center">
         <ul class="flex items-center gap-3 p-2 overflow-x-auto text-neutral dark:text-neutral">
             <li>
-                <button (click)="onClickData(null)" aria-label="Filtrar todas as sessões"><app-date-card [infos]="'Todas as sessões'.split('.')"></app-date-card></button>
+                <app-date-card aria-label="Filtrar todas as sessões" (click)="onClickData(null)" [infos]="'Todas as sessões'.split('.')"></app-date-card>
             </li>
             @for (item of dia_da_semana(); track $index) {
                 <li>
-                    <button (click)="onClickData(item)" aria-label="Filtrar por {{item.dateFormatted}} {{item.dayOfWeek}}"><app-date-card [infos]="item.dateFormatted.concat(':' +item.dayOfWeek).split(':')"></app-date-card></button>
+                    <app-date-card aria-label="Filtrar por {{item.dateFormatted}} {{item.dayOfWeek}}" (click)="onClickData(item)" [infos]="item.dateFormatted.concat(':' +item.dayOfWeek).split(':')"></app-date-card>
                 </li>
             }
         </ul>

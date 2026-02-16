@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-date-card',
@@ -8,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class DateCardComponent {
   @Input() infos!: string[];
+
+  @Output() click = new EventEmitter;
+
+  onClick() {
+    this.click.emit();
+  }
 }
