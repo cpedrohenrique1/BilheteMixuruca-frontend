@@ -1,0 +1,4 @@
+<a [routerLink]="link" class="flex flex-col items-center text-center gap-2 p-6 hover:bg-emerald-100 dark:hover:bg-slate-600 rounded-4xl" (click)="onClick()">
+    <img [src]="urlImage" loading="lazy" [alt]="'Poster do filme' + name" class="w-full min-h-80 rounded-4xl">
+    <p class="text-xl text-black dark:text-white font-semibold">{{name}}</p>
+</a>

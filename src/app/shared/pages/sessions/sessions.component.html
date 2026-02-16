@@ -1,31 +1,41 @@
-<div class="container">
-    <h1>Sessões de <span>{{nome_filme}}</span></h1>
-    <div>
-        <nav class="dates">
-            <ul class="datesUl">
+<div class="flex flex-col gap-6">
+    <h1 class="text-3xl">Sessões de <span class="capitalize">{{nome_filme}}</span></h1>
+    <nav class="flex justify-center">
+        <ul class="flex items-center gap-3 p-2 overflow-x-auto text-neutral dark:text-neutral">
+            <li>
+                <app-date-card aria-label="Filtrar todas as sessões" (click)="onClickData(null)" [infos]="'Todas as sessões'.split('.')"></app-date-card>
+            </li>
+            @for (item of dia_da_semana(); track $index) {
                 <li>
-                    <button (click)="onClickData(null)"><p>Todas as sessões</p></button>
-                </li>
-                @for (item of dia_da_semana; track $index) {
-                    <li>
-                        <button (click)="onClickData(item)"><p>{{item.dateFormatted}}</p><p>{{item.dayOfWeek}}</p></button>
-                    </li>
-                }
-            </ul>
-        </nav>
-    </div>
-    @if (loading) {
-        <div class="loading" id="loading">
-            <img class="loading__img" src="https://www.blogson.com.br/wp-content/uploads/2017/10/loading-gif-transparent-10.gif">
-        </div>
-    }
-    <nav class="sessions">
-        <ul class="sessionsUl">
-            @for (item of show_sessions; track $index) {
-                <li>
-                    <app-item [image]="false" [data]="item.data" [dia_semana]="item.dia_da_semana" [full_price]="item.precoInteira" [half_price]="item.precoMeia" [horario]="item.horario" [name]="item.nome_cinema" [link]="item.urlBuy"></app-item>
+                    <app-date-card aria-label="Filtrar por {{item.dateFormatted}} {{item.dayOfWeek}}" (click)="onClickData(item)" [infos]="item.dateFormatted.concat(':' +item.dayOfWeek).split(':')"></app-date-card>
                 </li>
             }
         </ul>
+    </nav>
+    <nav>
+        @if (loading()) {
+            <span class="flex justify-center p-10"><span aria-label="Carregando sessões" class="loading loading-dots loading-xl text-black dark:text-white"
+                    id="loading"></span></span>
+            <ul class="grid gap-5 p-2 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] pb-6">
+                @for (item of loadingComponent(); track $index) {
+                    <li>
+                        <div class="flex w-full flex-col gap-2">
+                            <div class="skeleton h-56 w-full"></div>
+                            <div class="skeleton h-12 w-full"></div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        } @else {
+            <ul class="grid gap-3 justify-items-center grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+                @for (item of show_sessions(); track $index) {
+                    <li>
+                        <app-movie-sessions [data]="item.data" [dia_semana]="item.dia_da_semana" [full_price]="item.precoInteira"
+                            [half_price]="item.precoMeia" [horario]="item.horario" [cinemaName]="item.nome_cinema"
+                            [link]="item.urlBuy"></app-movie-sessions>
+                    </li>
+                }
+            </ul>
+        }
     </nav>
 </div>

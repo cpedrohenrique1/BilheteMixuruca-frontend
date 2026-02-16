@@ -1,19 +1,38 @@
-<div class="background">
-    <h1>Filmes</h1>
-    <nav class="container">
-        <ul class="container__filmes">
-            @for (item of filme; track $index) {
-                @if (item.images[0].type === "PosterPortrait") {
+<div class="flex flex-col gap-2">
+    <h1 class="text-3xl">Filmes em cartaz</h1>
+    <nav>
+        @if (loading()) {
+        <span class="flex justify-center p-10"><span aria-label="Carregando filmes" class="loading loading-dots loading-xl text-black dark:text-white"></span></span>
+            <ul class="grid gap-5 p-2 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+                @for (item of loadingComponent(); track $index) {
                     <li>
-                        <app-item class="filmes" [name]="item.title" [urlImage]="item.images[0].url" link="sessions/{{item.id}}/{{item.urlKey}}"></app-item>
+                        <div class="flex w-full flex-col gap-2">
+                            <div class="skeleton h-56 w-full"></div>
+                            <div class="skeleton h-12 w-full"></div>
+                        </div>
                     </li>
+                }
+            </ul>
+        }
+        @else {
+        <nav>
+            <ul class="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+                @for (item of filme(); track $index) {
+                @if (item.images[0].type === "PosterPortrait") {
+                <li>
+                    <app-movie-poster [name]="item.title" [urlImage]="item.images[0].url"
+                        link="sessoes/{{item.id}}/{{item.urlKey}}"></app-movie-poster>
+                </li>
                 }
                 @else {
-                    <li>
-                        <app-item class="filmes" [name]="item.title" [urlImage]="item.images[1].url" link="sessions/{{item.id}}/{{item.urlKey}}"></app-item>
-                    </li>
+                <li>
+                    <app-movie-poster [name]="item.title" [urlImage]="item.images[1].url"
+                        link="sessoes/{{item.id}}/{{item.urlKey}}"></app-movie-poster>
+                </li>
                 }
-            }
-        </ul>
+                }
+            </ul>
+        </nav>
+        }
     </nav>
 </div>
